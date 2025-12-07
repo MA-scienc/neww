@@ -18,3 +18,10 @@ CREATE TABLE underwriting.ConvrPayloadJsonProto
     PayloadJson   JSON NOT NULL
 );
 GO
+
+---------
+
+INSERT INTO underwriting.ConvrPayloadJsonProto (SubmissionID, PayloadJson)
+SELECT 'A12345', BulkColumn
+FROM OPENROWSET(BULK '/json_samples/payload1.json', SINGLE_CLOB) AS j;
+
